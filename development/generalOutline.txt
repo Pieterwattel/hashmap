@@ -1,18 +1,56 @@
-│
-├── model/
-│  └── 
-│
-├── controller
-│  └── 
-│
-├── view
-│  └── 
-│
-├── main.js
-├── styles.css
-├── index.html
+make the linked list into a clean module, clear interface, make functions private
+make a module with class linked list
+make a module with class hashmap
+make a module test
+import all to main
+do all interaction to the hashmap on main.js
 
 
-├── 
-│  └── 
-│
+make an array of 16
+add a attribute entryAmount
+make a function that generates a hash code
+
+add the following methods to module hashmap:
+
+set(key, value)
+- let it generate a hash code
+- place it in the array under that code
+- add +1 to entryAmount
+
+make a function called checkIfArrayNeedsGrowth(array.length, entryAmount), true || false
+- add the check to set()
+
+now add functionality to add multiple values to the same bucket:
+IF an array entry is empty, make a new linkedlist. add the item
+ELSE push the item at the end of the linked list
+
+add the following functions:
+get(key)
+return value || null
+
+has(key)
+return true || false
+
+remove(key)
+return true || false
+
+length()
+return number of stored keys
+
+clear()
+removes all entries
+
+keys()
+return all keys inside the hash map
+
+values()
+return array with all values
+
+entries
+return array with [key, value] pairs
+
+
+
+write logic of checkIfArrayNeedsToGrow()
+
+check for each function if the linkedlist class needs a function for that as well

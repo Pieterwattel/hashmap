@@ -1,0 +1,3 @@
+const hashmap = {};
+
+export { hashmap };
