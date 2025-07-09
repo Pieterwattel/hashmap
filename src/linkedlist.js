@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-class LinkedList {
+class Linkedlist {
   head = null;
   tail = null;
   size = 0;
@@ -133,4 +133,4 @@ class LinkedList {
   };
 }
 
-export { LinkedList };
+export { Linkedlist };

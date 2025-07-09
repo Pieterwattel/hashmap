@@ -1,3 +1,3 @@
-const hashmap = {};
+const Hashmap = {};
 
-export { hashmap };
+export { Hashmap };

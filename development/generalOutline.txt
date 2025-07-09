@@ -1,7 +1,7 @@
 make the linked list into a clean module, clear interface, make functions private
-make a module with class linked list
-make a module with class hashmap
-make a module test
+*make a module with class linked list
+*make a module with class hashmap
+*make a module test
 import all to main
 do all interaction to the hashmap on main.js
 
@@ -17,7 +17,7 @@ set(key, value)
 - place it in the array under that code
 - add +1 to entryAmount
 
-make a function called checkIfArrayNeedsGrowth(array.length, entryAmount), true || false
+make a function called checkIfArrayShouldGrow(array.length, entryAmount), true || false
 - add the check to set()
 
 now add functionality to add multiple values to the same bucket:
