@@ -2,17 +2,16 @@ make the linked list into a clean module, clear interface, make functions privat
 *make a module with class linked list
 *make a module with class hashmap
 *make a module test
-import all to main
+*import all to main
 do all interaction to the hashmap on main.js
 
-
-make an array of 16
-add a attribute entryAmount
 make a function that generates a hash code
+make an array of 16
+add a attribute length
 
 add the following methods to module hashmap:
 
-set(key, value)
+x set(key, value)
 - let it generate a hash code
 - place it in the array under that code
 - add +1 to entryAmount
@@ -25,28 +24,28 @@ IF an array entry is empty, make a new linkedlist. add the item
 ELSE push the item at the end of the linked list
 
 add the following functions:
-get(key)
+x get(key)
 return value || null
 
-has(key)
+x has(key)
 return true || false
 
-remove(key)
+xremove(key)
 return true || false
 
-length()
+xlength()
 return number of stored keys
 
-clear()
+x clear()
 removes all entries
 
-keys()
+x keys()
 return all keys inside the hash map
 
-values()
+x values()
 return array with all values
 
-entries
+x entries
 return array with [key, value] pairs
 
 

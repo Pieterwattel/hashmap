@@ -1,3 +1,5 @@
-const Hashmap = {};
+class Hashmap {
+  constructor() {}
+}
 
 export { Hashmap };
