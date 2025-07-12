@@ -108,20 +108,37 @@ class Linkedlist {
       return 'no nodes present';
     }
     function addNodes(node) {
-      if (list.head == node) {
-        arr.push('head: ' + node.value);
-      } else if (list.tail == node) {
-        arr.push('tail: ' + node.value);
-      } else {
-        arr.push(node.value);
-      }
-      console.log(`pushed node: ${node.value}`);
+      arr.push(node.value);
       if (node.nextNode) {
         addNodes(node.nextNode);
       }
     }
     addNodes(this.head);
     return arr;
+  }
+
+  find(value) {
+    let currentNode = this.head;
+    do {
+      if (currentNode.value === value) {
+        break;
+      }
+      currentNode = currentNode.nextNode;
+    } while (currentNode != this.tail);
+    return currentNode;
+  }
+
+  findIndex(value) {
+    let currentNode = this.head;
+    i = 0;
+    do {
+      if (currentNode.value === value) {
+        break;
+      }
+      currentNode = currentNode.nextNode;
+      i++;
+    } while (currentNode != this.tail);
+    return i;
   }
 
   #ListNode = class {
