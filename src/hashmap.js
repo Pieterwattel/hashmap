@@ -10,6 +10,8 @@ class Hashmap {
   }
 
   set(key, value) {
+    this.#increaseBuckets();
+
     const hashCode = this.#hash(key);
 
     let bucketData = this.buckets[hashCode];
@@ -26,7 +28,6 @@ class Hashmap {
         this.buckets[hashCode] = linkedlist;
       }
     }
-    console.log(this.length);
     this.length++;
   }
 
@@ -179,6 +180,14 @@ class Hashmap {
   #getNodeValue(node) {
     let keyValuePair = node.value;
     return keyValuePair.value;
+  }
+
+  #increaseBuckets() {
+    console.log(this.length * 0.8, this.#buckets.length);
+    if (this.length * 0.8 > this.#buckets.length) {
+      console.log(this.length * 0.8);
+      console.log(this.#buckets.length);
+    }
   }
 }
 

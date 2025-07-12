@@ -118,6 +118,34 @@ test('entries() - returns an array with all entries', () => {
   );
 });
 
+test('bucketAmount grows when max values is added for size', () => {
+  testHashmap.clear();
+  testHashmap.set('A', 'a');
+  testHashmap.set('B', 'b');
+  testHashmap.set('C', 'c');
+  testHashmap.set('D', 'd');
+  testHashmap.set('E', 'e');
+  testHashmap.set('F', 'f');
+  testHashmap.set('G', 'g');
+  testHashmap.set('H', 'h');
+  testHashmap.set('I', 'i');
+  testHashmap.set('J', 'j');
+  testHashmap.set('K', 'k');
+  testHashmap.set('L', 'l');
+  testHashmap.set('M', 'm');
+  testHashmap.set('N', 'n');
+  testHashmap.set('O', 'o');
+  testHashmap.set('P', 'p');
+  testHashmap.set('Q', 'q');
+  testHashmap.set('R', 'r');
+  testHashmap.set('S', 's');
+  testHashmap.set('T', 't');
+  testHashmap.set('U', 'u');
+  testHashmap.set('v', 'v');
+
+  expect(testHashmap.buckets.length > 17).toBe(true);
+});
+
 test('a new hashmap has buckets', () => {
   expect(Array.isArray(testHashmap.buckets)).toBe(true);
 });
@@ -228,27 +256,6 @@ test('entries() - returns an array with all entries', () => {
   expect(testHashmap.entries()).not.toEqual(
     expect.arrayContaining([{ key: 'key-aab', value: 'aab' }]),
   );
-});
-
-test('bucketAmount grows when max values is added for size', () => {
-  testHashmap.clear();
-  testHashmap.set('A', 'a');
-  testHashmap.set('B', 'b');
-  testHashmap.set('C', 'c');
-  testHashmap.set('D', 'd');
-  testHashmap.set('E', 'e');
-  testHashmap.set('F', 'f');
-  testHashmap.set('G', 'g');
-  testHashmap.set('H', 'h');
-  testHashmap.set('I', 'i');
-  testHashmap.set('J', 'j');
-  testHashmap.set('K', 'k');
-  testHashmap.set('L', 'l');
-  testHashmap.set('M', 'm');
-  testHashmap.set('N', 'n');
-  testHashmap.set('O', 'o');
-
-  expect(testHashmap.array.length > 17);
 });
 
 /*
