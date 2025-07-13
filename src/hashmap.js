@@ -9,9 +9,9 @@ class Hashmap {
     return this.#buckets;
   }
 
-  set(key, value) {
-    this.#increaseBuckets();
+  setArr = [];
 
+  set(key, value) {
     const hashCode = this.#hash(key);
 
     let bucketData = this.buckets[hashCode];
@@ -29,7 +29,13 @@ class Hashmap {
       }
     }
     this.length++;
+
+    if (this.#checkBucketOverload(key, value)) {
+      this.#increaseBuckets();
+    }
   }
+
+  logs() {}
 
   clear() {
     this.#buckets = Array(16).fill(undefined);
@@ -182,12 +188,53 @@ class Hashmap {
     return keyValuePair.value;
   }
 
-  #increaseBuckets() {
-    console.log(this.length * 0.8, this.#buckets.length);
-    if (this.length * 0.8 > this.#buckets.length) {
-      console.log(this.length * 0.8);
-      console.log(this.#buckets.length);
+  #checkBucketOverload(key, value) {
+    if (this.length > this.#buckets.length * 0.8) {
+      console.log(key, value);
+      console.log(this.length, this.#buckets.length);
+      return true;
+    } else {
+      return false;
     }
+  }
+
+  #increaseBuckets() {
+    const newBucketSize = this.buckets.length * 2;
+    const oldEntries = this.entries();
+    this.#buckets = Array(newBucketSize).fill(undefined);
+
+    this.reSetEntries(oldEntries);
+  }
+
+  reSetEntries(oldEntries) {
+    let key;
+    let value;
+
+    oldEntries.forEach((entry) => {
+      key = entry.key;
+      value = entry.value;
+
+      const hashCode = this.#hash(key);
+
+      let bucketData = this.buckets[hashCode];
+      if (bucketData == undefined) {
+        this.buckets[hashCode] = { value, key };
+      } else {
+        if (bucketData instanceof Linkedlist) {
+          bucketData.append({ key, value });
+        } else {
+          //make the two values into one linked list
+          const linkedlist = new Linkedlist();
+          linkedlist.append(bucketData);
+          linkedlist.append({ key, value });
+          this.buckets[hashCode] = linkedlist;
+        }
+      }
+
+      if (this.#checkBucketOverload(key, value)) {
+        this.#increaseBuckets();
+      }
+    });
   }
 }
 

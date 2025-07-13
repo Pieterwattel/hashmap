@@ -119,6 +119,8 @@ test('entries() - returns an array with all entries', () => {
 });
 
 test('bucketAmount grows when max values is added for size', () => {
+  expect(testHashmap.logs()).toBe(undefined);
+
   testHashmap.clear();
   testHashmap.set('A', 'a');
   testHashmap.set('B', 'b');
@@ -134,42 +136,37 @@ test('bucketAmount grows when max values is added for size', () => {
   testHashmap.set('L', 'l');
   testHashmap.set('M', 'm');
   testHashmap.set('N', 'n');
-  testHashmap.set('O', 'o');
-  testHashmap.set('P', 'p');
-  testHashmap.set('Q', 'q');
-  testHashmap.set('R', 'r');
-  testHashmap.set('S', 's');
-  testHashmap.set('T', 't');
-  testHashmap.set('U', 'u');
-  testHashmap.set('v', 'v');
 
   expect(testHashmap.buckets.length > 17).toBe(true);
+  expect(testHashmap.hasKey('C')).toBe(true);
+
+  expect(testHashmap.logs()).toBe(undefined);
 });
 
-test('a new hashmap has buckets', () => {
+test('test after bucket size increase: a new hashmap has buckets', () => {
   expect(Array.isArray(testHashmap.buckets)).toBe(true);
 });
 
-test('hashmap can receive value', () => {
+test('test after bucket size increase: hashmap can receive value', () => {
   testHashmap.set('key1', 'value1');
   expect(testHashmap.buckets.some(Boolean)).toBe(true);
 });
 
-test('set - hashmap length changes when a value is added', () => {
+test('test after bucket size increase: set - hashmap length changes when a value is added', () => {
   testHashmap.clear();
   testHashmap.set('key2', 'value2');
   testHashmap.set('key3', 'value3');
   expect(testHashmap.length).toBe(2);
 });
 
-test('clear - can clear hashmap', () => {
+test('test after bucket size increase: clear - can clear hashmap', () => {
   testHashmap.clear();
   testHashmap.set('key3', 'value3');
   testHashmap.clear();
   expect(testHashmap.buckets.some(Boolean)).toBe(false);
 });
 
-test('can make a linked list in a bucket', () => {
+test('test after bucket size increase: can make a linked list in a bucket', () => {
   testHashmap.clear();
   testHashmap.set('aaa', 'key-aaa');
   testHashmap.set('aaq', 'key-aaq');
@@ -177,12 +174,12 @@ test('can make a linked list in a bucket', () => {
   expect(Boolean(testHashmap.buckets[1].nextNode) == true);
 });
 
-test('get - can get value from key', () => {
+test('test after bucket size increase: get - can get value from key', () => {
   testHashmap.set('key5', 'value5');
   expect(testHashmap.get('key5')).toBe('value5');
 });
 
-test('get - can get value from key when bucket contains linked list', () => {
+test('test after bucket size increase: get - can get value from key when bucket contains linked list', () => {
   testHashmap.clear();
   testHashmap.set('key-aaa', 'aaa');
   testHashmap.set('key-aaq', 'aaq');
@@ -190,7 +187,7 @@ test('get - can get value from key when bucket contains linked list', () => {
   expect(testHashmap.get('key-aaa')).toBe('aaa');
 });
 
-test('has - hashmap can confirm if a key is present', () => {
+test('test after bucket size increase: has - hashmap can confirm if a key is present', () => {
   testHashmap.clear();
   testHashmap.set('aaa', 'aaaVal');
   testHashmap.set('aaq', 'aaqVal');
@@ -202,7 +199,7 @@ test('has - hashmap can confirm if a key is present', () => {
   expect(testHashmap.hasKey('aac')).toBe(true);
 });
 
-test('remove - hashmap can remove a key', () => {
+test('test after bucket size increase: remove - hashmap can remove a key', () => {
   testHashmap.clear();
   testHashmap.set('key5', 'value5');
   testHashmap.set('key4', 'value4');
@@ -216,7 +213,7 @@ test('remove - hashmap can remove a key', () => {
   expect(Boolean(testHashmap.remove('key2'))).toBe(false);
 });
 
-test('keys() - returns an array with all keys', () => {
+test('test after bucket size increase: keys() - returns an array with all keys', () => {
   testHashmap.clear();
   testHashmap.set('aaa', 'key-aaa');
   testHashmap.set('aaq', 'key-aaq');
@@ -228,7 +225,7 @@ test('keys() - returns an array with all keys', () => {
   expect(testHashmap.keys().includes('aaz')).toBe(false);
 });
 
-test('values() - returns an array with all values', () => {
+test('test after bucket size increase: values() - returns an array with all values', () => {
   testHashmap.clear();
   testHashmap.set('key-aaa', 'aaa');
   testHashmap.set('key-aaq', 'aaq');
@@ -240,7 +237,7 @@ test('values() - returns an array with all values', () => {
   expect(testHashmap.values().includes('aaz')).toBe(false);
 });
 
-test('entries() - returns an array with all entries', () => {
+test('test after bucket size increase: entries() - returns an array with all entries', () => {
   testHashmap.clear();
   testHashmap.set('key-aaa', 'aaa');
   testHashmap.set('key-aaq', 'aaq');
@@ -259,7 +256,7 @@ test('entries() - returns an array with all entries', () => {
 });
 
 /*
-test('string', () => {
+test('test after bucket size increase: string', () => {
   expect(something).toBe(thing);
 });
 */
